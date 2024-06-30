@@ -146,7 +146,7 @@ public class Formulario extends JFrame {
         btnReportes.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                Becas becas = new Becas();
+               Becas becas = new Becas();
                 for (Estudiantes estudiante : estudiantes) {
                     becas.agregarEstudiante(estudiante);
                 }
@@ -200,3 +200,4 @@ public class Formulario extends JFrame {
         }
     }
 }
+//uwu
