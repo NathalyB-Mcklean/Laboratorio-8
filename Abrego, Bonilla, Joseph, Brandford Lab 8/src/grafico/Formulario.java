@@ -4,22 +4,21 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import logica.Estudiantes;
-import logica.Becas;
-
-import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.SystemColor;
+import java.util.ArrayList;
+import logica.Estudiantes;
+import logica.Becas;
 
 public class Formulario extends JFrame {
 
@@ -70,6 +69,16 @@ public class Formulario extends JFrame {
         textNombre = new JTextField();
         textNombre.setFont(new Font("Tahoma", Font.PLAIN, 20));
         textNombre.setBounds(126, 100, 191, 22);
+        textNombre.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetter(c) && !Character.isWhitespace(c) && c != KeyEvent.VK_BACK_SPACE) {
+                    e.consume();  // Ignorar la entrada no válida
+                    JOptionPane.showMessageDialog(null, "Por favor, ingrese solo letras.", "Entrada no válida", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
         contentPane.add(textNombre);
         textNombre.setColumns(10);
 
@@ -192,9 +201,6 @@ public class Formulario extends JFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese datos válidos.", "Error",
                     JOptionPane.ERROR_MESSAGE);
-            
-            
-            
         }
     }
 }
