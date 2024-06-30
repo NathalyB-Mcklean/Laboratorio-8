@@ -143,7 +143,6 @@ public class Formulario extends JFrame {
             }
         });
     
-
         btnReportes.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();

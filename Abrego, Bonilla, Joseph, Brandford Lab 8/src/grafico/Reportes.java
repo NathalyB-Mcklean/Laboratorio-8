@@ -70,7 +70,6 @@ public class Reportes extends JFrame {
                 busqueda.setVisible(true);
             }
         });
-
         btnBusqueda.setFont(new Font("Tahoma", Font.PLAIN, 18));
         btnBusqueda.setBounds(393, 382, 182, 35);
         contentPane.add(btnBusqueda);
