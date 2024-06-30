@@ -25,7 +25,7 @@ public class Becas {
                 estudiantesBecados.add(estudiante.getNombre());
             }
         }
-
+uuw
         return estudiantesBecados;
     }
 
