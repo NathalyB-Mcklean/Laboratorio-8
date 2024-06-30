@@ -26,8 +26,8 @@ public class Becas {
             }
         }
 
+
         return estudiantesBecados;
     }
-    uwus
-
+  
 }
