@@ -142,6 +142,7 @@ public class Formulario extends JFrame {
                 guardarDatos();
             }
         });
+    
 
         btnReportes.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

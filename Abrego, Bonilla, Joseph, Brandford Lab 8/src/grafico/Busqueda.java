@@ -43,6 +43,7 @@ public class Busqueda extends JFrame {
             }
         });
     }
+   
 
     public Busqueda() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
