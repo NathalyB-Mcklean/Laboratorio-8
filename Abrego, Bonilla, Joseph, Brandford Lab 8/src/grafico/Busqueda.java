@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
+import java.awt.Font;
 
 public class Busqueda extends JFrame {
 
@@ -46,5 +47,10 @@ public class Busqueda extends JFrame {
 		JLabel lblNewLabel = new JLabel("Búsqueda");
 		lblNewLabel.setBounds(307, 11, 49, 14);
 		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Cédula Uwu");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_1.setBounds(35, 48, 92, 14);
+		contentPane.add(lblNewLabel_1);
 	}
 }
