@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -12,6 +14,10 @@ public class Busqueda extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JTextField textField;
+    private JTextArea textArea;
+    
+    // Estructura de datos para almacenar información
+    private Map<String, String[]> datosGuardados; // Usamos un mapa donde la clave es la cédula y el valor es un array con [sexo, carrera, elegibilidad]
 
     /**
      * Launch the application.
@@ -64,8 +70,8 @@ public class Busqueda extends JFrame {
         lblNewLabel_1_1.setBounds(35, 134, 123, 17);
         contentPane.add(lblNewLabel_1_1);
 
-        JComboBox comboBox = new JComboBox();
-        comboBox.setModel(new DefaultComboBoxModel(new String[] {"Femenino", "Masculino", "Otro"}));
+        JComboBox<String> comboBox = new JComboBox<>();
+        comboBox.setModel(new DefaultComboBoxModel<>(new String[] {"Femenino", "Masculino", "Otro"}));
         comboBox.setBounds(139, 91, 132, 17);
         contentPane.add(comboBox);
 
@@ -74,8 +80,8 @@ public class Busqueda extends JFrame {
         lblNewLabel_1_1_1.setBounds(35, 89, 123, 17);
         contentPane.add(lblNewLabel_1_1_1);
 
-        JComboBox comboBox_1 = new JComboBox();
-        comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Ingeniería Civil", "Ingeniería Eléctrica", "Ingeniería Industrial", "Ingeniería en Sistemas", "Ingeniería Mecánica", "Ingeniería Marítima"}));
+        JComboBox<String> comboBox_1 = new JComboBox<>();
+        comboBox_1.setModel(new DefaultComboBoxModel<>(new String[] {"Ingeniería Civil", "Ingeniería Eléctrica", "Ingeniería Industrial", "Ingeniería en Sistemas", "Ingeniería Mecánica", "Ingeniería Marítima"}));
         comboBox_1.setBounds(139, 133, 132, 17);
         contentPane.add(comboBox_1);
 
@@ -83,24 +89,42 @@ public class Busqueda extends JFrame {
         btnBuscarBecado.setBounds(300, 106, 139, 23);
         contentPane.add(btnBuscarBecado);
 
+        textArea = new JTextArea();
+        textArea.setBounds(35, 180, 500, 200);
+        contentPane.add(textArea);
+
+        // Inicialización de la estructura de datos
+        datosGuardados = new HashMap<>();
+        // Ejemplo de datos guardados
+        datosGuardados.put("1234567890", new String[]{"Femenino", "Ingeniería Civil", "Elegible para beca"});
+        datosGuardados.put("0987654321", new String[]{"Masculino", "Ingeniería en Sistemas", "No elegible para beca"});
+
         // Adding action listeners for the buttons
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String cedula = textField.getText();
-                String sexo = comboBox.getSelectedItem().toString();
-                String carrera = comboBox_1.getSelectedItem().toString();
-                // Add your search logic here
-                JOptionPane.showMessageDialog(null, "Buscar: \nCédula: " + cedula + "\nSexo: " + sexo + "\nCarrera: " + carrera);
+                // Buscar en los datos guardados
+                if (datosGuardados.containsKey(cedula)) {
+                    String[] datos = datosGuardados.get(cedula);
+                    String resultado = "Cédula: " + cedula + "\nSexo: " + datos[0] + "\nCarrera: " + datos[1] + "\nElegibilidad: " + datos[2];
+                    textArea.setText(resultado);
+                } else {
+                    textArea.setText("No se encontraron datos para la cédula ingresada.");
+                }
             }
         });
 
         btnBuscarBecado.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String cedula = textField.getText();
-                String sexo = comboBox.getSelectedItem().toString();
-                String carrera = comboBox_1.getSelectedItem().toString();
-                // Add your search logic for "Buscar becado" here
-                JOptionPane.showMessageDialog(null, "Buscar becado: \nCédula: " + cedula + "\nSexo: " + sexo + "\nCarrera: " + carrera);
+                // Buscar en los datos guardados
+                if (datosGuardados.containsKey(cedula)) {
+                    String[] datos = datosGuardados.get(cedula);
+                    String resultado = "Cédula: " + cedula + "\nSexo: " + datos[0] + "\nCarrera: " + datos[1] + "\nElegibilidad: " + datos[2];
+                    textArea.setText(resultado);
+                } else {
+                    textArea.setText("No se encontraron datos para la cédula ingresada.");
+                }
             }
         });
     }

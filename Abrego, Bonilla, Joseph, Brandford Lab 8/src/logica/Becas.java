@@ -29,5 +29,10 @@ public class Becas {
 
         return estudiantesBecados;
     }
+
+	public Estudiantes[] getEstudiantes() {
+		// TODO Auto-generated method stub
+		return null;
+	}
   
 }

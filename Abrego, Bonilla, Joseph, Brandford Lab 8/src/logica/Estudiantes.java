@@ -23,4 +23,19 @@ public class Estudiantes {
         return nombre;
     }
 
+	public Object getCarrera() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object getSexo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object getCedula() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
