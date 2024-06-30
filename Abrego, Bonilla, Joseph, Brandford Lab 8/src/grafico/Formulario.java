@@ -154,6 +154,16 @@ public class Formulario extends JFrame {
                 reportes.setVisible(true);
                 reportes.mostrarBecados(becas);
             }
+
+        });
+        // Agregar ActionListener para el botón "Búsqueda"
+        btnBsqueda.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Abrir la ventana de búsqueda
+                Busqueda busqueda = new Busqueda(); // Pasar la lista de estudiantes
+                busqueda.setVisible(true);
+            }
         });
     }
 
@@ -184,6 +194,7 @@ public class Formulario extends JFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese datos válidos.", "Error",
                     JOptionPane.ERROR_MESSAGE);
+            
             
             
         }

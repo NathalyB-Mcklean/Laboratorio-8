@@ -70,6 +70,8 @@ public class Reportes extends JFrame {
                 busqueda.setVisible(true);
             }
         });
+
+
         btnBusqueda.setFont(new Font("Tahoma", Font.PLAIN, 18));
         btnBusqueda.setBounds(393, 382, 182, 35);
         contentPane.add(btnBusqueda);
@@ -79,6 +81,13 @@ public class Reportes extends JFrame {
         btnFormulario.setBackground(SystemColor.controlLtHighlight);
         btnFormulario.setBounds(88, 382, 182, 35);
         contentPane.add(btnFormulario);
+        btnFormulario.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	Formulario formulario = new Formulario ();
+            	formulario.setVisible(true);
+            }
+        });
+
     }
     private static Becas becas;
     

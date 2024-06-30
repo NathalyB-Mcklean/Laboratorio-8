@@ -94,6 +94,9 @@ public class Busqueda extends JFrame {
                 }
             }
         });
+        
+        
+        
         btnMostrarB.setFont(new Font("Tahoma", Font.PLAIN, 18));
         btnMostrarB.setBounds(65, 149, 184, 34);
         contentPane.add(btnMostrarB);
@@ -151,8 +154,24 @@ public class Busqueda extends JFrame {
         btnReportes.setBackground(SystemColor.textHighlightText);
         btnReportes.setBounds(397, 427, 207, 34);
         contentPane.add(btnReportes);
+    
+       
+        btnReportes.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	Reportes reportes = new Reportes ();
+            	reportes.setVisible(true);
+            }
+        });
+        
+    btnFormulario.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+        	Formulario formulario = new Formulario ();
+        	formulario.setVisible(true);
+        }
+    });
     }
 
+    
     private Estudiantes buscarEstudiantePorCedula(String cedula) {
         for (Estudiantes estudiante : Formulario.estudiantes) {
             if (estudiante.getCedula().equals(cedula)) {
