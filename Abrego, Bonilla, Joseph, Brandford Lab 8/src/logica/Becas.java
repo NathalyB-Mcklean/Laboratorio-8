@@ -1,8 +1,10 @@
 package logica;
+
 import java.util.ArrayList;
 
+
 public class Becas {
-	private static final int MAX_ESTUDIANTES = 100;
+    private static final int MAX_ESTUDIANTES = 100;
     private ArrayList<Estudiantes> estudiantes;
 
     public Becas() {
@@ -17,17 +19,28 @@ public class Becas {
         }
     }
 
-    public ArrayList<String> obtenerEstudiantesBecados() {
-        ArrayList<String> estudiantesBecados = new ArrayList<>();
+    public ArrayList<Estudiantes> obtenerEstudiantesBecados() {
+        ArrayList<Estudiantes> estudiantesBecados = new ArrayList<>();
 
         for (Estudiantes estudiante : estudiantes) {
             if (estudiante.getIndiceAcademico() >= 2.0) {
-                estudiantesBecados.add(estudiante.getNombre());
+                estudiantesBecados.add(estudiante);
             }
         }
 
+        return estudiantesBecados;
+    }
+
+    public ArrayList<Estudiantes> obtenerEstudiantesBecadosPorCarreraYSexo(String carrera, String sexo) {
+        ArrayList<Estudiantes> estudiantesBecados = new ArrayList<>();
+
+        for (Estudiantes estudiante : estudiantes) {
+            if (estudiante.getIndiceAcademico() >= 2.0 && estudiante.getCarrera().equals(carrera)
+                    && estudiante.getSexo().equals(sexo)) {
+                estudiantesBecados.add(estudiante);
+            }
+        }
 
         return estudiantesBecados;
     }
-  
 }
