@@ -23,13 +23,13 @@ import java.awt.SystemColor;
 
 public class Formulario extends JFrame {
 
-    private static final long serialVersionUID = 1L;
-    private JPanel contentPane;
-    private JTextField textNombre;
-    private JTextField textIndice;
-    private JTextField textCedula;
-    private JComboBox<String> comboBoxCarreras;
-    private JComboBox<String> comboBoxSexo;
+    public static final long serialVersionUID = 1L;
+    public JPanel contentPane;
+    public JTextField textNombre;
+    public JTextField textIndice;
+    public JTextField textCedula;
+    public JComboBox<String> comboBoxCarreras;
+    public JComboBox<String> comboBoxSexo;
 
     public static ArrayList<Estudiantes> estudiantes;
 
@@ -156,18 +156,16 @@ public class Formulario extends JFrame {
             }
 
         });
-        // Agregar ActionListener para el botón "Búsqueda"
         btnBsqueda.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Abrir la ventana de búsqueda
-                Busqueda busqueda = new Busqueda(); // Pasar la lista de estudiantes
+                Busqueda busqueda = new Busqueda(); 
                 busqueda.setVisible(true);
             }
         });
     }
 
-    private void guardarDatos() {
+    public void guardarDatos() {
         try {
             String nombre = textNombre.getText();
             String cedula = textCedula.getText();
@@ -175,7 +173,7 @@ public class Formulario extends JFrame {
             String carrera = (String) comboBoxCarreras.getSelectedItem();
             String sexo = (String) comboBoxSexo.getSelectedItem();
 
-            // Validar que el índice esté entre 0 y 3
+           
             if (indice < 0 || indice > 3) {
                 throw new NumberFormatException();
             }

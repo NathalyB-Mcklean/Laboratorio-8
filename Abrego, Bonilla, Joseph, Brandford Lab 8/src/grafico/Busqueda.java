@@ -17,19 +17,20 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import logica.Estudiantes;
 import java.awt.SystemColor;
+import javax.swing.JOptionPane;
 
 public class Busqueda extends JFrame {
 
-    private static final long serialVersionUID = 1L;
-    private JPanel contentPane;
-    private JTextField textField;
-    private JTextArea textAreaBecados;
-    private JComboBox<String> comboBoxCarreras;
-    private JComboBox<String> comboBoxSexo;
-    private JButton btnBsquedaDeBecados;
-    private JLabel lblResultadosDeLa;
-    private JButton btnFormulario;
-    private JButton btnReportes;
+    public static final long serialVersionUID = 1L;
+    public JPanel contentPane;
+    public JTextField textField;
+    public JTextArea textAreaBecados;
+    public JComboBox<String> comboBoxCarreras;
+    public JComboBox<String> comboBoxSexo;
+    public JButton btnBsquedaDeBecados;
+    public JLabel lblResultadosDeLa;
+    public JButton btnFormulario;
+    public JButton btnReportes;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -43,7 +44,6 @@ public class Busqueda extends JFrame {
             }
         });
     }
-
 
     public Busqueda() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,9 +74,9 @@ public class Busqueda extends JFrame {
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setBounds(379, 110, 235, 286); // Adjusted size to fit the area properly
         contentPane.add(scrollPane);
-        
-                textAreaBecados = new JTextArea();
-                scrollPane.setViewportView(textAreaBecados);
+
+        textAreaBecados = new JTextArea();
+        scrollPane.setViewportView(textAreaBecados);
 
         JButton btnMostrarB = new JButton("Mostrar Búsqueda");
         btnMostrarB.setBackground(SystemColor.textHighlightText);
@@ -91,13 +91,12 @@ public class Busqueda extends JFrame {
                             + "Índice Académico: " + encontrado.getIndiceAcademico() + "\n"
                             + "Sexo: " + encontrado.getSexo());
                 } else {
-                    textAreaBecados.setText("No se encontró ningún estudiante con esa cédula.");
+                    textAreaBecados.setText("");
+                    JOptionPane.showMessageDialog(null, "No se encontró ningún estudiante con esa cédula.");
                 }
             }
         });
-        
-        
-        
+
         btnMostrarB.setFont(new Font("Tahoma", Font.PLAIN, 18));
         btnMostrarB.setBounds(65, 149, 184, 34);
         contentPane.add(btnMostrarB);
@@ -132,48 +131,51 @@ public class Busqueda extends JFrame {
                 String carrera = (String) comboBoxCarreras.getSelectedItem();
                 String sexo = (String) comboBoxSexo.getSelectedItem();
                 ArrayList<Estudiantes> estudiantesBecados = buscarEstudiantesPorCarreraYSexo(carrera, sexo);
-                mostrarEstudiantesBecados(estudiantesBecados);
+                if (estudiantesBecados.isEmpty()) {
+                    textAreaBecados.setText("");
+                    JOptionPane.showMessageDialog(null, "No se encontraron estudiantes becados con los datos ingresados.");
+                } else {
+                    mostrarEstudiantesBecados(estudiantesBecados);
+                }
             }
         });
         btnBsquedaDeBecados.setFont(new Font("Tahoma", Font.PLAIN, 18));
         btnBsquedaDeBecados.setBounds(65, 336, 207, 34);
         contentPane.add(btnBsquedaDeBecados);
-        
+
         lblResultadosDeLa = new JLabel("Resultados de la búsqueda:");
         lblResultadosDeLa.setFont(new Font("Tahoma", Font.PLAIN, 18));
         lblResultadosDeLa.setBounds(379, 78, 235, 46);
         contentPane.add(lblResultadosDeLa);
-        
+
         btnFormulario = new JButton("Formulario");
         btnFormulario.setFont(new Font("Tahoma", Font.PLAIN, 18));
         btnFormulario.setBackground(SystemColor.textHighlightText);
         btnFormulario.setBounds(65, 427, 207, 34);
         contentPane.add(btnFormulario);
-        
+
         btnReportes = new JButton("Reportes");
         btnReportes.setFont(new Font("Tahoma", Font.PLAIN, 18));
         btnReportes.setBackground(SystemColor.textHighlightText);
         btnReportes.setBounds(397, 427, 207, 34);
         contentPane.add(btnReportes);
-    
-       
+
         btnReportes.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	Reportes reportes = new Reportes ();
-            	reportes.setVisible(true);
+                Reportes reportes = new Reportes();
+                reportes.setVisible(true);
             }
         });
-        
-    btnFormulario.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-        	Formulario formulario = new Formulario ();
-        	formulario.setVisible(true);
-        }
-    });
+
+        btnFormulario.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Formulario formulario = new Formulario();
+                formulario.setVisible(true);
+            }
+        });
     }
 
-    
-    private Estudiantes buscarEstudiantePorCedula(String cedula) {
+    public Estudiantes buscarEstudiantePorCedula(String cedula) {
         for (Estudiantes estudiante : Formulario.estudiantes) {
             if (estudiante.getCedula().equals(cedula)) {
                 return estudiante;
@@ -182,7 +184,7 @@ public class Busqueda extends JFrame {
         return null;
     }
 
-    private ArrayList<Estudiantes> buscarEstudiantesPorCarreraYSexo(String carrera, String sexo) {
+    public ArrayList<Estudiantes> buscarEstudiantesPorCarreraYSexo(String carrera, String sexo) {
         ArrayList<Estudiantes> estudiantesBecados = new ArrayList<>();
 
         for (Estudiantes estudiante : Formulario.estudiantes) {
@@ -195,9 +197,8 @@ public class Busqueda extends JFrame {
         return estudiantesBecados;
     }
 
-    private void mostrarEstudiantesBecados(ArrayList<Estudiantes> estudiantes) {
+    public void mostrarEstudiantesBecados(ArrayList<Estudiantes> estudiantes) {
         StringBuilder sb = new StringBuilder();
-        //sb.append("Estudiantes Becados:\n");
         for (Estudiantes estudiante : estudiantes) {
             sb.append("Nombre: ").append(estudiante.getNombre()).append("\n")
                     .append("Cédula: ").append(estudiante.getCedula()).append("\n")
@@ -206,7 +207,6 @@ public class Busqueda extends JFrame {
                     .append("Sexo: ").append(estudiante.getSexo()).append("\n\n");
         }
         textAreaBecados.setText(sb.toString());
-        
-        
     }
 }
+

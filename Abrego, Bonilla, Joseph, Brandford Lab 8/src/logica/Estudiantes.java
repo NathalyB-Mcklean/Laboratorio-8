@@ -3,11 +3,11 @@ package logica;
 import java.lang.String;
 
 public class Estudiantes {
-	private String nombre;
-    private String cedula;
-    private String carrera;
-    private String sexo;
-    private double indiceAcademico;
+	public String nombre;
+    public String cedula;
+    public String carrera;
+    public String sexo;
+    public double indiceAcademico;
 
     public Estudiantes(String nombre, String cedula, String carrera, double indiceAcademico, String sexo) {
         this.nombre = nombre;

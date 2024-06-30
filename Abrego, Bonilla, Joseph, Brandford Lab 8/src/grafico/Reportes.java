@@ -19,8 +19,8 @@ import java.awt.SystemColor;
 
 public class Reportes extends JFrame {
 
-    private JPanel contentPane;
-    private JTextArea textAreaBecados;
+    public JPanel contentPane;
+    public JTextArea textAreaBecados;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -88,14 +88,12 @@ public class Reportes extends JFrame {
         });
 
     }
-    private static Becas becas;
+    public static Becas becas;
     
-    // Método corregido para mostrar los estudiantes becados
     public void mostrarBecados(Becas becas) {
         ArrayList<Estudiantes> estudiantesBecados = becas.obtenerEstudiantesBecados();
 
         StringBuilder sb = new StringBuilder();
-        //sb.append("Nombres de los Estudiantes:\n");
         for (Estudiantes estudiante : estudiantesBecados) {
             sb.append(estudiante.getNombre()).append("\n");
         }
