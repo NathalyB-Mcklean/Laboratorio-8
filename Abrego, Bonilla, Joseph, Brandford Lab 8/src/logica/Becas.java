@@ -28,6 +28,6 @@ public class Becas {
 
         return estudiantesBecados;
     }
-    uwu
+    uwus
 
 }
