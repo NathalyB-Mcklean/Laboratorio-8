@@ -66,7 +66,7 @@ public class Reportes extends JFrame {
         btnBusqueda.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	dispose();
-                // Abrir la ventana de búsqueda
+               
                 Busqueda busqueda = new Busqueda();
                 busqueda.setVisible(true);
             }

@@ -72,7 +72,7 @@ public class Busqueda extends JFrame {
         contentPane.add(textField);
 
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(379, 110, 235, 286); // Adjusted size to fit the area properly
+        scrollPane.setBounds(379, 110, 235, 286); 
         contentPane.add(scrollPane);
 
         textAreaBecados = new JTextArea();

@@ -74,7 +74,7 @@ public class Formulario extends JFrame {
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
                 if (!Character.isLetter(c) && !Character.isWhitespace(c) && c != KeyEvent.VK_BACK_SPACE) {
-                    e.consume();  // Ignorar la entrada no válida
+                    e.consume();  
                     JOptionPane.showMessageDialog(null, "Por favor, ingrese solo letras.", "Entrada no válida", JOptionPane.ERROR_MESSAGE);
                 }
             }
