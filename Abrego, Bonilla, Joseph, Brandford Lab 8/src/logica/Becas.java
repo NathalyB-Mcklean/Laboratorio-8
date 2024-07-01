@@ -2,8 +2,8 @@ package logica;
 
 import java.util.ArrayList;
 public class Becas {
-    private static final int MAX_ESTUDIANTES = 100;
-    private ArrayList<Estudiantes> estudiantes;
+    public static final int MAX_ESTUDIANTES = 100;
+    public ArrayList<Estudiantes> estudiantes;
 
     public Becas() {
         estudiantes = new ArrayList<>();
